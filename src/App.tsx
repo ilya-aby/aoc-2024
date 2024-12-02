@@ -1,27 +1,27 @@
-import sampleData from './assets/inputs/D1/D1-input.txt?raw';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import D1 from './pages/D1';
+
+function Home() {
+  return <div>Home Page</div>;
+}
 
 export default function App() {
-  const lines = sampleData.trim().split('\n');
-  const list1 = lines.map((line) => Number(line.split(/\s+/)[0])).sort((a, b) => a - b);
-  const list2 = lines.map((line) => Number(line.split(/\s+/)[1])).sort((a, b) => a - b);
-
-  console.log('Sorted list 1:', list1);
-  console.log('Sorted list 2:', list2);
-
-  const sumOfDifferences = list1.reduce((sum, num, i) => sum + Math.abs(num - list2[i]), 0);
-
-  console.log('Sum of differences:', sumOfDifferences);
-
-  // Create frequency map for list2
-  const freqMap = new Map();
-  list2.forEach((num) => {
-    freqMap.set(num, (freqMap.get(num) || 0) + 1);
-  });
-
-  // Multiply each number in list1 by its frequency in list2
-  const multipliedValues = list1.map((num) => num * (freqMap.get(num) || 0));
-  const sumOfMultipliedValues = multipliedValues.reduce((sum, num) => sum + num, 0);
-  console.log('Sum of multiplied values:', sumOfMultipliedValues);
-
-  return <></>;
+  return (
+    <BrowserRouter>
+      {/* Parent Container */}
+      <div className='min-h-screen bg-slate-900'>
+        {/* Navigation Bar */}
+        <Navigation />
+        {/* Main Container */}
+        <main className='ml-64 p-6 text-slate-100'>
+          {/* Route Definitions */}
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/d1' element={<D1 />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
 }
