@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import D1 from './pages/D1';
+import D2 from './pages/D2';
 
 function Home() {
   return <div>Home Page</div>;
@@ -19,6 +20,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/d1' element={<D1 />} />
+            <Route path='/d2' element={<D2 />} />
           </Routes>
         </main>
       </div>

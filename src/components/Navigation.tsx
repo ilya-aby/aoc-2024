@@ -24,6 +24,9 @@ export default function Navigation() {
       <Link to='/d1' className='text-slate-100 transition-colors hover:text-slate-300'>
         Day 1
       </Link>
+      <Link to='/d2' className='text-slate-100 transition-colors hover:text-slate-300'>
+        Day 2
+      </Link>
     </nav>
   );
 }
