@@ -1,26 +1,21 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import D1 from './pages/D1';
-import D2 from './pages/D2';
-
-function Home() {
-  return <div>Home Page</div>;
-}
+import { routes } from './routes/routes';
 
 export default function App() {
   return (
     <BrowserRouter>
       {/* Parent Container */}
-      <div className='min-h-screen bg-slate-900'>
+      <div className='min-h-screen bg-gray-800'>
         {/* Navigation Bar */}
         <Navigation />
         {/* Main Container */}
-        <main className='ml-64 p-6 text-slate-100'>
+        <main className='ml-80 p-4 text-slate-100'>
           {/* Route Definitions */}
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/d1' element={<D1 />} />
-            <Route path='/d2' element={<D2 />} />
+            {routes.map(({ path, component: Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
           </Routes>
         </main>
       </div>
