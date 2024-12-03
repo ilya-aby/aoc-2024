@@ -10,7 +10,7 @@ export default function App() {
         {/* Navigation Bar */}
         <Navigation />
         {/* Main Container */}
-        <main className='ml-80 p-4 text-slate-100'>
+        <main className='ml-80 p-4 text-gray-100'>
           {/* Route Definitions */}
           <Routes>
             {routes.map(({ path, component: Component }) => (

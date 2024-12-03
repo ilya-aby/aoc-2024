@@ -8,11 +8,12 @@ export type RouteConfig = {
   label: string;
   day: number;
   component: React.ComponentType;
+  description?: string;
 };
 
 export const routes: RouteConfig[] = [
   { path: '/', label: 'Home', day: 0, component: Home },
-  { path: '/d1', label: 'Day 1', day: 1, component: D1 },
-  { path: '/d2', label: 'Day 2', day: 2, component: D2 },
-  { path: '/d3', label: 'Day 3', day: 3, component: D3 },
+  { path: '/d1', label: 'Day 1', day: 1, component: D1, description: 'TBD' },
+  { path: '/d2', label: 'Day 2', day: 2, component: D2, description: 'TBD' },
+  { path: '/d3', label: 'Day 3', day: 3, component: D3, description: 'TBD' },
 ];
