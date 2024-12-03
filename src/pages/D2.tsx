@@ -1,4 +1,5 @@
-import sampleData from '../assets/inputs/D2/D2-input.txt?raw';
+import fullData from '../assets/inputs/D2-input.txt?raw';
+import sampleData from '../assets/inputs/D2-sample.txt?raw';
 
 function isSafeReport(report: number[], toleranceBit = false): boolean {
   let priorLevel = null;
@@ -43,8 +44,8 @@ function isSafeReport(report: number[], toleranceBit = false): boolean {
   return true;
 }
 
-function D2P1() {
-  const lines = sampleData.trim().split('\n');
+function D2P1(data: string): number {
+  const lines = data.trim().split('\n');
 
   let safeCount = 0;
 
@@ -57,8 +58,8 @@ function D2P1() {
   return safeCount;
 }
 
-function D2P2(): number {
-  const lines = sampleData.trim().split('\n');
+function D2P2(data: string): number {
+  const lines = data.trim().split('\n');
 
   let safeCount = 0;
 
@@ -71,15 +72,17 @@ function D2P2(): number {
   return safeCount;
 }
 
-export default function D2() {
+export default function D2({ inputType }: { inputType: 'sample' | 'full' }) {
+  const data = inputType === 'sample' ? sampleData : fullData;
+
   return (
     <>
       <h1>Day 2</h1>
       <p>
-        Safe count: <span className='font-mono text-lime-500'>{D2P1()}</span>
+        Safe count: <span className='font-mono text-lime-500'>{D2P1(data)}</span>
       </p>
       <p>
-        Safe count with tolerance bit: <span className='font-mono text-lime-500'>{D2P2()}</span>
+        Safe count with tolerance bit: <span className='font-mono text-lime-500'>{D2P2(data)}</span>
       </p>
     </>
   );

@@ -7,13 +7,13 @@ export type RouteConfig = {
   path: string;
   label: string;
   day: number;
-  component: React.ComponentType;
+  component: React.ComponentType<{ inputType: 'sample' | 'full' }>;
   description?: string;
 };
 
 export const routes: RouteConfig[] = [
-  { path: '/', label: 'Home', day: 0, component: Home },
-  { path: '/d1', label: 'Day 1', day: 1, component: D1, description: 'TBD' },
-  { path: '/d2', label: 'Day 2', day: 2, component: D2, description: 'TBD' },
-  { path: '/d3', label: 'Day 3', day: 3, component: D3, description: 'TBD' },
+  { path: '/', label: 'Home', day: 0, component: Home, description: 'Home' },
+  { path: '/d1', label: 'Day 1', day: 1, component: D1, description: 'Historian Hysteria' },
+  { path: '/d2', label: 'Day 2', day: 2, component: D2, description: 'Red-Nosed Reports' },
+  { path: '/d3', label: 'Day 3', day: 3, component: D3, description: 'Mull It Over' },
 ];

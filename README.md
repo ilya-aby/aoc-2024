@@ -10,3 +10,4 @@
 - Using React Router to create routing for different days' solutions
   - Using a routes .ts constants file that can be mapped over to generate both route objects & nav links
 - Creating a fixed-position left nav bar with corresponding offset on the main container
+- Using a button group with a state variable to control global state

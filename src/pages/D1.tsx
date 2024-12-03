@@ -1,7 +1,9 @@
-import sampleData from '../assets/inputs/D1/D1-input.txt?raw';
+import fullData from '../assets/inputs/D1-input.txt?raw';
+import sampleData from '../assets/inputs/D1-sample.txt?raw';
 
-export default function D1() {
-  const lines = sampleData.trim().split('\n');
+export default function D1({ inputType }: { inputType: 'sample' | 'full' }) {
+  const data = inputType === 'sample' ? sampleData : fullData;
+  const lines = data.trim().split('\n');
   const list1 = lines.map((line) => Number(line.split(/\s+/)[0])).sort((a, b) => a - b);
   const list2 = lines.map((line) => Number(line.split(/\s+/)[1])).sort((a, b) => a - b);
 

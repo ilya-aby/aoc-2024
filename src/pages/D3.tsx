@@ -1,7 +1,8 @@
-import sampleData from '../assets/inputs/D3-input.txt?raw';
+import fullData from '../assets/inputs/D3-input.txt?raw';
+import sampleData from '../assets/inputs/D3-sample.txt?raw';
 
-function D3P1(): number {
-  const line = sampleData.trim();
+function D3P1(data: string): number {
+  const line = data.trim();
 
   const regex = /mul\((\d+),(\d+)\)/g;
   const matches = [...line.matchAll(regex)];
@@ -16,9 +17,9 @@ function D3P1(): number {
   return runningProduct;
 }
 
-function D3P2(): number {
+function D3P2(data: string): number {
   // Add 'do()' to the beginning of the line to ensure the first match is a do()
-  const line = 'do()' + sampleData.trim();
+  const line = 'do()' + data.trim();
 
   const instructionRegex = /mul\((\d+),(\d+)\)/g;
 
@@ -47,16 +48,18 @@ function D3P2(): number {
   return runningProduct;
 }
 
-export default function D2() {
+export default function D3({ inputType }: { inputType: 'sample' | 'full' }) {
+  const data = inputType === 'sample' ? sampleData : fullData;
+
   return (
     <>
       <h1>Day 3</h1>
       <p>
-        Multiplication sum: <span className='font-mono text-lime-500'>{D3P1()}</span>
+        Multiplication sum: <span className='font-mono text-lime-500'>{D3P1(data)}</span>
       </p>
       <p>
         Multiplication sum with do() and don't():{' '}
-        <span className='font-mono text-lime-500'>{D3P2()}</span>
+        <span className='font-mono text-lime-500'>{D3P2(data)}</span>
       </p>
     </>
   );
