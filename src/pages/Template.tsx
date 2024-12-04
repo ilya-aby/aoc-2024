@@ -1,5 +1,5 @@
 import fullData from '../assets/inputs/DX-input.txt?raw';
-import sampleData from '../assets/inputs/DX-sample.txt';
+import sampleData from '../assets/inputs/DX-sample.txt?raw';
 
 function DXP1(data: string): number {
   const line = data.trim();

@@ -1,6 +1,7 @@
 import D1 from '../pages/D1';
 import D2 from '../pages/D2';
 import D3 from '../pages/D3';
+import D4 from '../pages/D4';
 import Home from '../pages/Home';
 
 export type RouteConfig = {
@@ -16,4 +17,5 @@ export const routes: RouteConfig[] = [
   { path: '/d1', label: 'Day 1', day: 1, component: D1, description: 'Historian Hysteria' },
   { path: '/d2', label: 'Day 2', day: 2, component: D2, description: 'Red-Nosed Reports' },
   { path: '/d3', label: 'Day 3', day: 3, component: D3, description: 'Mull It Over' },
+  { path: '/d4', label: 'Day 4', day: 4, component: D4, description: 'Ceres Search' },
 ];
