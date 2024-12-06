@@ -77,7 +77,6 @@ export default function D2({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day 2</h1>
       <p>
         Safe count: <span className='font-mono text-lime-500'>{D2P1(data)}</span>
       </p>

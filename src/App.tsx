@@ -21,10 +21,23 @@ export default function App() {
             <ButtonGroup inputType={inputType} setInputType={setInputType} />
           </div>
           {/* Route Definitions */}
-          <div className='p-8 text-gray-100'>
+          <div className='p-8 text-gray-200'>
             <Routes>
-              {routes.map(({ path, component: Component }) => (
-                <Route key={path} path={path} element={<Component inputType={inputType} />} />
+              {routes.map(({ path, component: Component, day, description }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
+                    <>
+                      {day > 0 && (
+                        <h1 className='mb-6 font-mono text-lg'>
+                          --- Day {day}: {description} ---
+                        </h1>
+                      )}
+                      <Component inputType={inputType} />
+                    </>
+                  }
+                />
               ))}
             </Routes>
           </div>

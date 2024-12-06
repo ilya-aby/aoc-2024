@@ -120,7 +120,6 @@ export default function D5({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day 5</h1>
       <p>
         Part 1: <span className='font-mono text-lime-500'>{D5PX(data)[0]}</span>
       </p>

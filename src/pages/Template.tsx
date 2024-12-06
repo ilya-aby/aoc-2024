@@ -1,20 +1,24 @@
 import fullData from '../assets/inputs/DX-input.txt?raw';
 import sampleData from '../assets/inputs/DX-sample.txt?raw';
 
-function DXP1(data: string): number {
-  const line = data.trim();
-
-  return line.length;
+function parseData(data: string): string[][] {
+  return data
+    .trim()
+    .split('\n')
+    .map((line) => line.split(''));
 }
 
-function DXP2(data: string): number {
-  const line = data.trim();
+function DXP1(data: string[][]): number {
+  return data.length;
+}
 
-  return line.length;
+function DXP2(data: string[][]): number {
+  return data.length;
 }
 
 export default function DX({ inputType }: { inputType: 'sample' | 'full' }) {
-  const data = inputType === 'sample' ? sampleData : fullData;
+  const rawData = inputType === 'sample' ? sampleData : fullData;
+  const data = parseData(rawData);
 
   return (
     <>

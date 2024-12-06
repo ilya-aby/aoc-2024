@@ -53,7 +53,6 @@ export default function D3({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day 3</h1>
       <p>
         Multiplication sum: <span className='font-mono text-lime-500'>{D3P1(data)}</span>
       </p>

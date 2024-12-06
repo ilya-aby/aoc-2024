@@ -27,7 +27,6 @@ export default function D1({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day 1</h1>
       <p>
         Sum of differences: <span className='font-mono text-lime-500'>{sumOfDifferences}</span>
       </p>

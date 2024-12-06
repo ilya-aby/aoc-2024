@@ -85,7 +85,6 @@ export default function D4({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day 4</h1>
       <p>
         Part 1: <span className='font-mono text-lime-500'>{D4P1(data)}</span>
       </p>
