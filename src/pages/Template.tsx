@@ -22,7 +22,6 @@ export default function DX({ inputType }: { inputType: 'sample' | 'full' }) {
 
   return (
     <>
-      <h1>Day X</h1>
       <p>
         Part 1: <span className='font-mono text-lime-500'>{DXP1(data)}</span>
       </p>
