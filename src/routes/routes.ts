@@ -6,6 +6,7 @@ import D5 from '../pages/D5';
 import D6 from '../pages/D6';
 import D7 from '../pages/D7';
 import D8 from '../pages/D8';
+import D9 from '../pages/D9';
 import Home from '../pages/Home';
 
 export type RouteConfig = {
@@ -26,4 +27,5 @@ export const routes: RouteConfig[] = [
   { path: '/d6', label: 'Day 6', day: 6, component: D6, description: 'Guard Gallivant' },
   { path: '/d7', label: 'Day 7', day: 7, component: D7, description: 'Bridge Repair' },
   { path: '/d8', label: 'Day 8', day: 8, component: D8, description: 'Resonant Collinearity' },
+  { path: '/d9', label: 'Day 9', day: 9, component: D9, description: 'Disk Fragmenter' },
 ];
