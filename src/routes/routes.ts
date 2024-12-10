@@ -1,4 +1,5 @@
 import D1 from '../pages/D1';
+import D10 from '../pages/D10';
 import D2 from '../pages/D2';
 import D3 from '../pages/D3';
 import D4 from '../pages/D4';
@@ -28,4 +29,5 @@ export const routes: RouteConfig[] = [
   { path: '/d7', label: 'Day 7', day: 7, component: D7, description: 'Bridge Repair' },
   { path: '/d8', label: 'Day 8', day: 8, component: D8, description: 'Resonant Collinearity' },
   { path: '/d9', label: 'Day 9', day: 9, component: D9, description: 'Disk Fragmenter' },
+  { path: '/d10', label: 'Day 10', day: 10, component: D10, description: 'Hoof It' },
 ];
