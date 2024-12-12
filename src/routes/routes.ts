@@ -1,6 +1,7 @@
 import D1 from '../pages/D1';
 import D10 from '../pages/D10';
 import D11 from '../pages/D11';
+import D12 from '../pages/D12';
 import D2 from '../pages/D2';
 import D3 from '../pages/D3';
 import D4 from '../pages/D4';
@@ -32,4 +33,5 @@ export const routes: RouteConfig[] = [
   { path: '/d9', label: 'Day 9', day: 9, component: D9, description: 'Disk Fragmenter' },
   { path: '/d10', label: 'Day 10', day: 10, component: D10, description: 'Hoof It' },
   { path: '/d11', label: 'Day 11', day: 11, component: D11, description: 'Plutonian Pebbles' },
+  { path: '/d12', label: 'Day 12', day: 12, component: D12, description: 'Garden Groups' },
 ];
