@@ -129,7 +129,7 @@ function D12P1(data: string[][]): { part1: number; part2: number; timing: number
   return { part1: part1cost, part2: part2cost, timing };
 }
 
-export default function DX({ inputType }: { inputType: 'sample' | 'full' }) {
+export default function D12({ inputType }: { inputType: 'sample' | 'full' }) {
   const rawData = inputType === 'sample' ? sampleData : fullData;
   const data = parseData(rawData);
   const response1 = D12P1(data);
