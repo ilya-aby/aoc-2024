@@ -37,5 +37,5 @@ export const routes: RouteConfig[] = [
   { path: '/d11', label: 'Day 11', day: 11, component: D11, description: 'Plutonian Pebbles' },
   { path: '/d12', label: 'Day 12', day: 12, component: D12, description: 'Garden Groups' },
   { path: '/d13', label: 'Day 13', day: 13, component: D13, description: 'Claw Contraption' },
-  { path: '/d14', label: 'Day 14', day: 14, component: D14, description: 'Tractor Beam' },
+  { path: '/d14', label: 'Day 14', day: 14, component: D14, description: 'Restroom Redoubt' },
 ];
