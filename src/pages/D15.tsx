@@ -1,5 +1,6 @@
 import fullData from '../assets/inputs/D15-input.txt?raw';
 import sampleData from '../assets/inputs/D15-sample.txt?raw';
+import { AnimatedGridViz } from '../utils/AnimatedGridViz';
 import formatDuration from '../utils/formatDuration';
 import { GridViz } from '../utils/GridViz';
 
@@ -51,7 +52,6 @@ function D15P1(data: { map: Map; moves: Moves }): { result: number; timing: numb
   // Locate the robot row and column
   let robotRow = map.findIndex((row: string[]) => row.includes('@'));
   let robotCol = map[robotRow].indexOf('@');
-  console.log(robotRow, robotCol);
 
   // Apply the moves to the robot
   for (const move of data.moves) {
@@ -141,8 +141,14 @@ function getWideMapGPSSum(map: Map): number {
   return sum;
 }
 
-function D15P2(data: { map: Map; moves: Moves }): { result: number; timing: number; map: Map } {
+function D15P2(data: { map: Map; moves: Moves }): {
+  result: number;
+  timing: number;
+  map: Map;
+  frames: Map[];
+} {
   const start = performance.now();
+  const frames: Map[] = [];
 
   // Create deep copy of the double-width map
   const map = JSON.parse(JSON.stringify(widenMap(data.map)));
@@ -150,10 +156,10 @@ function D15P2(data: { map: Map; moves: Moves }): { result: number; timing: numb
   // Locate the robot row and column
   let robotRow = map.findIndex((row: string[]) => row.includes('@'));
   let robotCol = map[robotRow].indexOf('@');
-  console.log(robotRow, robotCol);
 
   // Apply the moves to the robot
   for (const move of data.moves) {
+    frames.push(JSON.parse(JSON.stringify(map)));
     const [rowVec, colVec] = dirStringToVector(move);
     const newRow = robotRow + rowVec;
     const newCol = robotCol + colVec;
@@ -310,7 +316,7 @@ function D15P2(data: { map: Map; moves: Moves }): { result: number; timing: numb
 
   const result = getWideMapGPSSum(map);
   const timing = performance.now() - start;
-  return { timing, result, map };
+  return { timing, result, map, frames };
 }
 
 export default function D15({ inputType }: { inputType: 'sample' | 'full' }) {
@@ -330,7 +336,7 @@ export default function D15({ inputType }: { inputType: 'sample' | 'full' }) {
         Part 2: <span className='font-mono text-lime-500'>{response2.result}</span>
       </p>
       <p className='font-mono text-gray-500'>⏱️ {formatDuration(response2.timing)}</p>
-      <GridViz grid={response2.map} />
+      <AnimatedGridViz frames={response2.frames} speed={10} framesPerRender={5} />
     </>
   );
 }

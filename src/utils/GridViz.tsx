@@ -1,11 +1,13 @@
-type GridCell = string | number | boolean | null | undefined;
+export type GridCell = string | number | boolean | null | undefined;
 
 type GridVizProps = {
   grid: GridCell[][];
   className?: string;
   showAxes?: boolean;
 };
+
 export const GridViz = ({ grid, className = '', showAxes = false }: GridVizProps) => {
+  if (!grid) return null;
   const maxRowDigits = grid.length.toString().length;
 
   return (
