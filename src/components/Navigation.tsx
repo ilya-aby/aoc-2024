@@ -13,7 +13,7 @@ export default function Navigation() {
         </Link>
       </div>
       {/* Navigation Links */}
-      <div className='mt-8 flex flex-col gap-1'>
+      <div className='mt-8 flex flex-col gap-1 overflow-y-auto'>
         {routes
           .filter((route) => route.path !== '/') // Exclude home route
           .map((route) => (
