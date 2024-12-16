@@ -1,6 +1,7 @@
 import fullData from '../assets/inputs/D16-input.txt?raw';
 import sampleData from '../assets/inputs/D16-sample.txt?raw';
 import formatDuration from '../utils/formatDuration';
+import { PriorityQueue } from '../utils/priorityQueue';
 
 type Map = string[][];
 type Point = [row: number, col: number];
@@ -29,11 +30,16 @@ function rotateHeading([dr, dc]: Point, direction: 1 | -1): Point {
   return direction === 1 ? [-dc, dr] : [dc, -dr];
 }
 
-function D16P1(data: { map: Map; start: Point; end: Point }): { result: number; timing: number } {
+function D16P1(data: { map: Map; start: Point; end: Point }): {
+  result: number;
+  timing: number;
+  frames: Map[];
+} {
   const start = performance.now();
+  const frames: Map[] = [];
 
   let minCostSeen = Infinity;
-  const queue: { point: Point; cost: number; heading: Point }[] = [];
+  const queue = new PriorityQueue<{ point: Point; cost: number; heading: Point }>((a) => a.cost);
 
   // Keep track of visited states (position + heading)
   const visited = new Map<string, number>();
@@ -41,8 +47,8 @@ function D16P1(data: { map: Map; start: Point; end: Point }): { result: number; 
   // Start facing east at the start point
   queue.push({ point: data.start, cost: 0, heading: [0, 1] });
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  while (queue.size > 0) {
+    const current = queue.pop();
     if (!current) continue;
     const { point, cost, heading } = current;
 
@@ -91,7 +97,7 @@ function D16P1(data: { map: Map; start: Point; end: Point }): { result: number; 
   }
 
   const timing = performance.now() - start;
-  return { timing, result: minCostSeen };
+  return { timing, result: minCostSeen, frames };
 }
 
 function D16P2(data: { map: Map; start: Point; end: Point }): { result: number; timing: number } {
@@ -99,7 +105,9 @@ function D16P2(data: { map: Map; start: Point; end: Point }): { result: number; 
 
   let minCostSeen = Infinity;
   const bestPaths = new Map<number, Point[][]>();
-  const queue: { point: Point; cost: number; heading: Point; path: Point[] }[] = [];
+  const queue = new PriorityQueue<{ point: Point; cost: number; heading: Point; path: Point[] }>(
+    (a) => a.cost,
+  );
 
   // Keep track of visited states (position + heading + cost)
   const visited = new Map<string, number>();
@@ -107,8 +115,8 @@ function D16P2(data: { map: Map; start: Point; end: Point }): { result: number; 
   // Start facing east at the start point
   queue.push({ point: data.start, cost: 0, heading: [0, 1], path: [data.start] });
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  while (queue.size > 0) {
+    const current = queue.pop();
     if (!current) continue;
     const { point, cost, heading, path } = current;
 
@@ -213,7 +221,7 @@ export default function D16({ inputType }: { inputType: 'sample' | 'full' }) {
         Part 1: <span className='font-mono text-lime-500'>{response1.result}</span>
       </p>
       <p className='font-mono text-gray-500'>⏱️ {formatDuration(response1.timing)}</p>
-      <p>
+      <p className='mt-4'>
         Part 2: <span className='font-mono text-lime-500'>{response2.result}</span>
       </p>
       <p className='font-mono text-gray-500'>⏱️ {formatDuration(response2.timing)}</p>

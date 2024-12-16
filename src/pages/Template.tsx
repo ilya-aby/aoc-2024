@@ -35,7 +35,7 @@ export default function DX({ inputType }: { inputType: 'sample' | 'full' }) {
         Part 1: <span className='font-mono text-lime-500'>{response1.result}</span>
       </p>
       <p className='font-mono text-gray-500'>⏱️ {formatDuration(response1.timing)}</p>
-      <p>
+      <p className='mt-4'>
         Part 2: <span className='font-mono text-lime-500'>{response2.result}</span>
       </p>
       <p className='font-mono text-gray-500'>⏱️ {formatDuration(response2.timing)}</p>

@@ -41,5 +41,5 @@ export const routes: RouteConfig[] = [
   { path: '/d13', label: 'Day 13', day: 13, component: D13, description: 'Claw Contraption' },
   { path: '/d14', label: 'Day 14', day: 14, component: D14, description: 'Restroom Redoubt' },
   { path: '/d15', label: 'Day 15', day: 15, component: D15, description: 'Warehouse Woes' },
-  { path: '/d16', label: 'Day 16', day: 16, component: D16, description: '???' },
+  { path: '/d16', label: 'Day 16', day: 16, component: D16, description: 'Reindeer Maze' },
 ];
