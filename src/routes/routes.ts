@@ -5,6 +5,7 @@ import D12 from '../pages/D12';
 import D13 from '../pages/D13';
 import D14 from '../pages/D14';
 import D15 from '../pages/D15';
+import D16 from '../pages/D16';
 import D2 from '../pages/D2';
 import D3 from '../pages/D3';
 import D4 from '../pages/D4';
@@ -40,4 +41,5 @@ export const routes: RouteConfig[] = [
   { path: '/d13', label: 'Day 13', day: 13, component: D13, description: 'Claw Contraption' },
   { path: '/d14', label: 'Day 14', day: 14, component: D14, description: 'Restroom Redoubt' },
   { path: '/d15', label: 'Day 15', day: 15, component: D15, description: 'Warehouse Woes' },
+  { path: '/d16', label: 'Day 16', day: 16, component: D16, description: '???' },
 ];
