@@ -190,21 +190,6 @@ function D16P2(data: { map: Map; start: Point; end: Point }): { result: number; 
     });
   });
 
-  console.log(uniqueTiles);
-  // Print the map with paths marked
-  console.log('\nPath visualization:');
-  for (let row = 0; row < data.map.length; row++) {
-    let line = '';
-    for (let col = 0; col < data.map[row].length; col++) {
-      if (uniqueTiles.has(`${row},${col}`)) {
-        line += 'O';
-      } else {
-        line += data.map[row][col];
-      }
-    }
-    console.log(line);
-  }
-
   const timing = performance.now() - start;
   return { timing, result: uniqueTiles.size };
 }

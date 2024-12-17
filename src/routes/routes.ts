@@ -6,6 +6,7 @@ import D13 from '../pages/D13';
 import D14 from '../pages/D14';
 import D15 from '../pages/D15';
 import D16 from '../pages/D16';
+import D17 from '../pages/D17';
 import D2 from '../pages/D2';
 import D3 from '../pages/D3';
 import D4 from '../pages/D4';
@@ -42,4 +43,5 @@ export const routes: RouteConfig[] = [
   { path: '/d14', label: 'Day 14', day: 14, component: D14, description: 'Restroom Redoubt' },
   { path: '/d15', label: 'Day 15', day: 15, component: D15, description: 'Warehouse Woes' },
   { path: '/d16', label: 'Day 16', day: 16, component: D16, description: 'Reindeer Maze' },
+  { path: '/d17', label: 'Day 17', day: 17, component: D17, description: 'Chronospatial Computer' },
 ];
