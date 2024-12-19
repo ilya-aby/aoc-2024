@@ -8,7 +8,14 @@ import D15 from '../pages/D15';
 import D16 from '../pages/D16';
 import D17 from '../pages/D17';
 import D18 from '../pages/D18';
+import D19 from '../pages/D19';
 import D2 from '../pages/D2';
+import D20 from '../pages/D20';
+import D21 from '../pages/D21';
+import D22 from '../pages/D22';
+import D23 from '../pages/D23';
+import D24 from '../pages/D24';
+import D25 from '../pages/D25';
 import D3 from '../pages/D3';
 import D4 from '../pages/D4';
 import D5 from '../pages/D5';
@@ -46,4 +53,11 @@ export const routes: RouteConfig[] = [
   { path: '/d16', label: 'Day 16', day: 16, component: D16, description: 'Reindeer Maze' },
   { path: '/d17', label: 'Day 17', day: 17, component: D17, description: 'Chronospatial Computer' },
   { path: '/d18', label: 'Day 18', day: 18, component: D18, description: 'RAM Run' },
+  { path: '/d19', label: 'Day 19', day: 19, component: D19, description: 'Linen Layout' },
+  { path: '/d20', label: 'Day 20', day: 20, component: D20, description: '???' },
+  { path: '/d21', label: 'Day 21', day: 21, component: D21, description: '???' },
+  { path: '/d22', label: 'Day 22', day: 22, component: D22, description: '???' },
+  { path: '/d23', label: 'Day 23', day: 23, component: D23, description: '???' },
+  { path: '/d24', label: 'Day 24', day: 24, component: D24, description: '???' },
+  { path: '/d25', label: 'Day 25', day: 25, component: D25, description: '???' },
 ];
