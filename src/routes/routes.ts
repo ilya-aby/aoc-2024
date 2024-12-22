@@ -56,7 +56,7 @@ export const routes: RouteConfig[] = [
   { path: '/d19', label: 'Day 19', day: 19, component: D19, description: 'Linen Layout' },
   { path: '/d20', label: 'Day 20', day: 20, component: D20, description: 'Race Condition' },
   { path: '/d21', label: 'Day 21', day: 21, component: D21, description: 'Keypad Conundrum' },
-  { path: '/d22', label: 'Day 22', day: 22, component: D22, description: '???' },
+  { path: '/d22', label: 'Day 22', day: 22, component: D22, description: 'Monkey Market' },
   { path: '/d23', label: 'Day 23', day: 23, component: D23, description: '???' },
   { path: '/d24', label: 'Day 24', day: 24, component: D24, description: '???' },
   { path: '/d25', label: 'Day 25', day: 25, component: D25, description: '???' },

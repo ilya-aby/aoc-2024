@@ -1,90 +1,3 @@
-// --- Day 21: Keypad Conundrum ---
-// As you teleport onto Santa's Reindeer-class starship, The Historians begin to panic: someone from their search party is missing. A quick life-form scan by the ship's computer reveals that when the missing Historian teleported, he arrived in another part of the ship.
-
-// The door to that area is locked, but the computer can't open it; it can only be opened by physically typing the door codes (your puzzle input) on the numeric keypad on the door.
-
-// The numeric keypad has four rows of buttons: 789, 456, 123, and finally an empty gap followed by 0A. Visually, they are arranged like this:
-
-// +---+---+---+
-// | 7 | 8 | 9 |
-// +---+---+---+
-// | 4 | 5 | 6 |
-// +---+---+---+
-// | 1 | 2 | 3 |
-// +---+---+---+
-//     | 0 | A |
-//     +---+---+
-// Unfortunately, the area outside the door is currently depressurized and nobody can go near the door. A robot needs to be sent instead.
-
-// The robot has no problem navigating the ship and finding the numeric keypad, but it's not designed for button pushing: it can't be told to push a specific button directly. Instead, it has a robotic arm that can be controlled remotely via a directional keypad.
-
-// The directional keypad has two rows of buttons: a gap / ^ (up) / A (activate) on the first row and < (left) / v (down) / > (right) on the second row. Visually, they are arranged like this:
-
-//     +---+---+
-//     | ^ | A |
-// +---+---+---+
-// | < | v | > |
-// +---+---+---+
-// When the robot arrives at the numeric keypad, its robotic arm is pointed at the A button in the bottom right corner. After that, this directional keypad remote control must be used to maneuver the robotic arm: the up / down / left / right buttons cause it to move its arm one button in that direction, and the A button causes the robot to briefly move forward, pressing the button being aimed at by the robotic arm.
-
-// For example, to make the robot type 029A on the numeric keypad, one sequence of inputs on the directional keypad you could use is:
-
-// < to move the arm from A (its initial position) to 0.
-// A to push the 0 button.
-// ^A to move the arm to the 2 button and push it.
-// >^^A to move the arm to the 9 button and push it.
-// vvvA to move the arm to the A button and push it.
-// In total, there are three shortest possible sequences of button presses on this directional keypad that would cause the robot to type 029A: <A^A>^^AvvvA, <A^A^>^AvvvA, and <A^A^^>AvvvA.
-
-// Unfortunately, the area containing this directional keypad remote control is currently experiencing high levels of radiation and nobody can go near it. A robot needs to be sent instead.
-
-// When the robot arrives at the directional keypad, its robot arm is pointed at the A button in the upper right corner. After that, a second, different directional keypad remote control is used to control this robot (in the same way as the first robot, except that this one is typing on a directional keypad instead of a numeric keypad).
-
-// There are multiple shortest possible sequences of directional keypad button presses that would cause this robot to tell the first robot to type 029A on the door. One such sequence is v<<A>>^A<A>AvA<^AA>A<vAAA>^A.
-
-// Unfortunately, the area containing this second directional keypad remote control is currently -40 degrees! Another robot will need to be sent to type on that directional keypad, too.
-
-// There are many shortest possible sequences of directional keypad button presses that would cause this robot to tell the second robot to tell the first robot to eventually type 029A on the door. One such sequence is <vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A.
-
-// Unfortunately, the area containing this third directional keypad remote control is currently full of Historians, so no robots can find a clear path there. Instead, you will have to type this sequence yourself.
-
-// Were you to choose this sequence of button presses, here are all of the buttons that would be pressed on your directional keypad, the two robots' directional keypads, and the numeric keypad:
-
-// <vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A
-// v<<A>>^A<A>AvA<^AA>A<vAAA>^A
-// <A^A>^^AvvvA
-// 029A
-// In summary, there are the following keypads:
-
-// One directional keypad that you are using.
-// Two directional keypads that robots are using.
-// One numeric keypad (on a door) that a robot is using.
-// It is important to remember that these robots are not designed for button pushing. In particular, if a robot arm is ever aimed at a gap where no button is present on the keypad, even for an instant, the robot will panic unrecoverably. So, don't do that. All robots will initially aim at the keypad's A key, wherever it is.
-
-// To unlock the door, five codes will need to be typed on its numeric keypad. For example:
-
-// 029A
-// 980A
-// 179A
-// 456A
-// 379A
-// For each of these, here is a shortest sequence of button presses you could type to cause the desired code to be typed on the numeric keypad:
-
-// 029A: <vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A
-// 980A: <v<A>>^AAAvA^A<vA<AA>>^AvAA<^A>A<v<A>A>^AAAvA<^A>A<vA>^A<A>A
-// 179A: <v<A>>^A<vA<A>>^AAvAA<^A>A<v<A>>^AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A
-// 456A: <v<A>>^AA<vA<A>>^AAvAA<^A>A<vA>^A<A>A<vA>^A<A>A<v<A>A>^AAvA<^A>A
-// 379A: <v<A>>^AvA^A<vA<AA>>^AAvA<^A>AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A
-// The Historians are getting nervous; the ship computer doesn't remember whether the missing Historian is trapped in the area containing a giant electromagnet or molten lava. You'll need to make sure that for each of the five codes, you find the shortest sequence of button presses necessary.
-
-// The complexity of a single code (like 029A) is equal to the result of multiplying these two values:
-
-// The length of the shortest sequence of button presses you need to type on your directional keypad in order to cause the code to be typed on the numeric keypad; for 029A, this would be 68.
-// The numeric part of the code (ignoring leading zeroes); for 029A, this would be 29.
-// In the above example, complexity of the five codes can be found by calculating 68 * 29, 60 * 980, 68 * 179, 64 * 456, and 64 * 379. Adding these together produces 126384.
-
-// Find the fewest number of button presses you'll need to perform in order to cause the robot in front of the door to type each code. What is the sum of the complexities of the five codes on your list?
-
 import fullData from '../assets/inputs/D21-input.txt?raw';
 import sampleData from '../assets/inputs/D21-sample.txt?raw';
 import formatDuration from '../utils/formatDuration';
@@ -104,12 +17,12 @@ type State = {
   cost: number;
 };
 
-type StateP2 = {
-  positions: Direction[];
-  numericPos: NumericKeypad;
-  inputSeq: string;
-  cost: number;
-};
+// type StateP2 = {
+//   positions: Direction[];
+//   numericPos: NumericKeypad;
+//   inputSeq: string;
+//   cost: number;
+// };
 
 function getNextPositionOnDirectionalKeypad(
   keyPress: Direction,
@@ -399,144 +312,144 @@ function findShortestSequence(targetCode: string): number {
   return -1;
 }
 
-function findShortestSequenceP2(targetCode: string): number {
-  const queue: StateP2[] = [];
-  const visited = new Set<string>();
+// function findShortestSequenceP2(targetCode: string): number {
+//   const queue: StateP2[] = [];
+//   const visited = new Set<string>();
 
-  // Human in L0, then 1 to LAYERS - 2 robots, then numeric keypad
-  const NUM_LAYERS = 7;
+//   // Human in L0, then 1 to LAYERS - 2 robots, then numeric keypad
+//   const NUM_LAYERS = 7;
 
-  // This array tracks the min cost at which we've reached a prefix length
-  const bestCostForPrefix = new Array(targetCode.length + 1).fill(Infinity);
-  bestCostForPrefix[0] = 0; // cost=0 => we have the empty prefix
+//   // This array tracks the min cost at which we've reached a prefix length
+//   const bestCostForPrefix = new Array(targetCode.length + 1).fill(Infinity);
+//   bestCostForPrefix[0] = 0; // cost=0 => we have the empty prefix
 
-  // Initial state: all robots pointing at 'A', no input sequence
-  const initialState: StateP2 = {
-    positions: Array(NUM_LAYERS - 2).fill('A') as Direction[],
-    numericPos: 'A' as NumericKeypad,
-    inputSeq: '',
-    cost: 0,
-  };
+//   // Initial state: all robots pointing at 'A', no input sequence
+//   const initialState: StateP2 = {
+//     positions: Array(NUM_LAYERS - 2).fill('A') as Direction[],
+//     numericPos: 'A' as NumericKeypad,
+//     inputSeq: '',
+//     cost: 0,
+//   };
 
-  let positionsExplored = 0;
+//   let positionsExplored = 0;
 
-  queue.push(initialState);
-  visited.add(
-    `${initialState.positions.join(',')},${initialState.numericPos},${initialState.inputSeq}`,
-  );
+//   queue.push(initialState);
+//   visited.add(
+//     `${initialState.positions.join(',')},${initialState.numericPos},${initialState.inputSeq}`,
+//   );
 
-  while (queue.length > 0) {
-    const current = queue.shift()!;
-    const directions: Direction[] = ['<', '>', '^', 'v', 'A'];
+//   while (queue.length > 0) {
+//     const current = queue.shift()!;
+//     const directions: Direction[] = ['<', '>', '^', 'v', 'A'];
 
-    // // If we've already used more than 50 moves per digit, bail out
-    // // (adjust 50 as needed)
-    // if (current.cost > (targetCode.length + 1) * NUM_LAYERS * 1000) {
-    //   continue;
-    // }
+//     // // If we've already used more than 50 moves per digit, bail out
+//     // // (adjust 50 as needed)
+//     // if (current.cost > (targetCode.length + 1) * NUM_LAYERS * 1000) {
+//     //   continue;
+//     // }
 
-    // // If our cost is already worse than the best-known cost for the same prefix length, prune
-    // if (current.cost > bestCostForPrefix[current.inputSeq.length] && current.inputSeq.length > 0) {
-    //   continue;
-    // }
+//     // // If our cost is already worse than the best-known cost for the same prefix length, prune
+//     // if (current.cost > bestCostForPrefix[current.inputSeq.length] && current.inputSeq.length > 0) {
+//     //   continue;
+//     // }
 
-    for (const direction of directions) {
-      const oldPositions = [...current.positions];
-      const newPositions = [...current.positions];
-      let newInputSeq = current.inputSeq;
-      let newNumericPos = current.numericPos;
-      positionsExplored++;
+//     for (const direction of directions) {
+//       const oldPositions = [...current.positions];
+//       const newPositions = [...current.positions];
+//       let newInputSeq = current.inputSeq;
+//       let newNumericPos = current.numericPos;
+//       positionsExplored++;
 
-      if (positionsExplored > 10000000000000) {
-        console.log(`P2: positionsExplored: ${positionsExplored}`);
-        break;
-      }
+//       if (positionsExplored > 10000000000000) {
+//         console.log(`P2: positionsExplored: ${positionsExplored}`);
+//         break;
+//       }
 
-      // Get next position for layer 1 based on layer 0 (your keypad)
-      const nextPos = getNextPositionOnDirectionalKeypad(direction, current.positions[0]);
-      if (!nextPos) continue;
-      newPositions[0] = nextPos;
+//       // Get next position for layer 1 based on layer 0 (your keypad)
+//       const nextPos = getNextPositionOnDirectionalKeypad(direction, current.positions[0]);
+//       if (!nextPos) continue;
+//       newPositions[0] = nextPos;
 
-      let propagateA = direction === 'A';
-      let currentLayer = 0;
-      let isInvalid = false;
-      while (propagateA && currentLayer < newPositions.length - 1) {
-        const nextPos = getNextPositionOnDirectionalKeypad(
-          oldPositions[currentLayer],
-          oldPositions[currentLayer + 1],
-        );
-        if (!nextPos) {
-          isInvalid = true;
-          break;
-        }
-        newPositions[currentLayer + 1] = nextPos;
-        propagateA = oldPositions[currentLayer] == 'A';
-        currentLayer++;
-      }
+//       let propagateA = direction === 'A';
+//       let currentLayer = 0;
+//       let isInvalid = false;
+//       while (propagateA && currentLayer < newPositions.length - 1) {
+//         const nextPos = getNextPositionOnDirectionalKeypad(
+//           oldPositions[currentLayer],
+//           oldPositions[currentLayer + 1],
+//         );
+//         if (!nextPos) {
+//           isInvalid = true;
+//           break;
+//         }
+//         newPositions[currentLayer + 1] = nextPos;
+//         propagateA = oldPositions[currentLayer] == 'A';
+//         currentLayer++;
+//       }
 
-      if (isInvalid) continue;
+//       if (isInvalid) continue;
 
-      // Check if all robots except the last one were at 'A' in the original state
-      const allPreviousWereA = oldPositions.slice(0, -1).every((pos) => pos === 'A');
+//       // Check if all robots except the last one were at 'A' in the original state
+//       const allPreviousWereA = oldPositions.slice(0, -1).every((pos) => pos === 'A');
 
-      if (allPreviousWereA && direction === 'A') {
-        // if (newPositions[newPositions.length - 2] === 'A') {
-        const nextNumericPos = getNextPositionOnNumericKeypad(
-          newPositions[newPositions.length - 1],
-          current.numericPos,
-        );
-        if (!nextNumericPos) continue;
-        newNumericPos = nextNumericPos;
+//       if (allPreviousWereA && direction === 'A') {
+//         // if (newPositions[newPositions.length - 2] === 'A') {
+//         const nextNumericPos = getNextPositionOnNumericKeypad(
+//           newPositions[newPositions.length - 1],
+//           current.numericPos,
+//         );
+//         if (!nextNumericPos) continue;
+//         newNumericPos = nextNumericPos;
 
-        // If the last robot pressed 'A', we add to the input sequence
-        if (newPositions[newPositions.length - 1] === 'A') {
-          newInputSeq = current.inputSeq + current.numericPos;
+//         // If the last robot pressed 'A', we add to the input sequence
+//         if (newPositions[newPositions.length - 1] === 'A') {
+//           newInputSeq = current.inputSeq + current.numericPos;
 
-          // Skip if the sequence doesn't match target code so far
-          if (newInputSeq !== targetCode.substring(0, newInputSeq.length)) {
-            continue;
-          }
+//           // Skip if the sequence doesn't match target code so far
+//           if (newInputSeq !== targetCode.substring(0, newInputSeq.length)) {
+//             continue;
+//           }
 
-          const costToReachPrefix = bestCostForPrefix[newInputSeq.length];
-          if (current.cost > costToReachPrefix) {
-            continue;
-          } else {
-            bestCostForPrefix[newInputSeq.length] = current.cost;
-          }
+//           const costToReachPrefix = bestCostForPrefix[newInputSeq.length];
+//           if (current.cost > costToReachPrefix) {
+//             continue;
+//           } else {
+//             bestCostForPrefix[newInputSeq.length] = current.cost;
+//           }
 
-          // If we've reached the end of the target code, we're done
-          if (newInputSeq === targetCode) {
-            console.log(`P2: positionsExplored: ${positionsExplored}`);
-            return current.cost + 1;
-          }
-        }
-      }
+//           // If we've reached the end of the target code, we're done
+//           if (newInputSeq === targetCode) {
+//             console.log(`P2: positionsExplored: ${positionsExplored}`);
+//             return current.cost + 1;
+//           }
+//         }
+//       }
 
-      const newState: StateP2 = {
-        positions: newPositions,
-        numericPos: newNumericPos,
-        inputSeq: newInputSeq,
-        cost: current.cost + 1,
-      };
+//       const newState: StateP2 = {
+//         positions: newPositions,
+//         numericPos: newNumericPos,
+//         inputSeq: newInputSeq,
+//         cost: current.cost + 1,
+//       };
 
-      const stateKey = `${newState.positions.join(',')},${newState.numericPos},${newState.inputSeq}`;
-      if (!visited.has(stateKey)) {
-        visited.add(stateKey);
-        queue.push(newState);
-      }
-      if (current.cost < 2000000) {
-        // Only log first few moves to avoid console spam
-        // console.log(
-        //   `P2: Human at L0 presses ${direction}. ` +
-        //     `Old State: ${current.positions.join(',')},${current.numericPos},${current.inputSeq} ` +
-        //     `New State: ${newState.positions.join(',')},${newState.numericPos},${newState.inputSeq}`,
-        // );
-      }
-    }
-  }
-  console.log(`P2: positionsExplored: ${positionsExplored}`);
-  return -1;
-}
+//       const stateKey = `${newState.positions.join(',')},${newState.numericPos},${newState.inputSeq}`;
+//       if (!visited.has(stateKey)) {
+//         visited.add(stateKey);
+//         queue.push(newState);
+//       }
+//       if (current.cost < 2000000) {
+//         // Only log first few moves to avoid console spam
+//         // console.log(
+//         //   `P2: Human at L0 presses ${direction}. ` +
+//         //     `Old State: ${current.positions.join(',')},${current.numericPos},${current.inputSeq} ` +
+//         //     `New State: ${newState.positions.join(',')},${newState.numericPos},${newState.inputSeq}`,
+//         // );
+//       }
+//     }
+//   }
+//   console.log(`P2: positionsExplored: ${positionsExplored}`);
+//   return -1;
+// }
 
 function getComplexity(inputSeqLength: number, targetCode: string): number {
   // Get numeric part of code, ignoring leading zeroes
@@ -688,21 +601,21 @@ function D21P1(data: string[]): { result: number; timing: number } {
   return { timing: performance.now() - start, result: sumOfComplexities };
 }
 
-function D21P2x(data: string[]): { result: number; timing: number } {
-  const start = performance.now();
+// function D21P2x(data: string[]): { result: number; timing: number } {
+//   const start = performance.now();
 
-  let sumOfComplexities = 0;
+//   let sumOfComplexities = 0;
 
-  // for (const code of data) {
-  //   const seqLength = findShortestSequenceP2(code);
-  //   sumOfComplexities += getComplexity(seqLength, code);
-  // }
+//   for (const code of data) {
+//     const seqLength = findShortestSequenceP2(code);
+//     sumOfComplexities += getComplexity(seqLength, code);
+//   }
 
-  console.log(findShortestSequence('029A'));
-  console.log(findShortestSequenceP2('029A'));
+//   console.log(findShortestSequence('029A'));
+//   console.log(findShortestSequenceP2('029A'));
 
-  return { timing: performance.now() - start, result: 0 };
-}
+//   return { timing: performance.now() - start, result: sumOfComplexities };
+// }
 
 export default function D21({ inputType }: { inputType: 'sample' | 'full' }) {
   const rawData = inputType === 'sample' ? sampleData : fullData;
